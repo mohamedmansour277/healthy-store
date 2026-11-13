@@ -8,7 +8,7 @@ const STORE_CONFIG = {
 
   // WhatsApp number in international format, digits only, no "+" or spaces.
   // Egypt example: 201012345678  (20 + mobile number without the leading 0)
-  whatsappNumber: "20XXXXXXXXXX",
+  whatsappNumber: "201029456680",
 
   currency: "EGP",
   currencyLabel: "جنيه",
