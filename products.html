@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>المنتجات | Healthy</title>
+<meta name="description" content="تصفح منتجات Healthy من الألبان والجبن والزبادي والعصائر، وابحث وفلتر وطلب بسهولة عبر واتساب داخل العريش.">
+<meta name="theme-color" content="#2926B8">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:site_name" content="Healthy">
+<meta property="og:title" content="المنتجات | Healthy">
+<meta property="og:description" content="تصفح منتجات Healthy من الألبان والجبن والزبادي والعصائر، وابحث وفلتر وطلب بسهولة عبر واتساب داخل العريش.">
+<!-- After deploying, change this to the full URL, e.g. https://your-domain.com/assets/images/banners/og-image.png -->
+<meta property="og:image" content="assets/images/banners/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+<link rel="preload" href="assets/vendor/fonts/tajawal-arabic-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/vendor/fonts/tajawal-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.rtl.min.css">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="products">
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+<!-- <div class="demo-strip" data-demo hidden>نسخة تجريبية: المنتجات والأسعار للعرض فقط</div> -->
+<div class="announce" role="note"><p data-announce-text>منتجات Healthy الطبيعية.. دلوقتي تقدر تطلبها لحد باب بيتك في العريش</p></div>
+<header class="site-header">
+  <div class="container site-header__in">
+    <a class="brand" href="index.html" aria-label="Healthy، الصفحة الرئيسية"><img src="assets/images/logo/logo.svg" alt="Healthy" width="120" height="30"></a>
+    <nav class="nav-main" aria-label="القائمة الرئيسية"><a href="index.html" >الرئيسية</a><a href="products.html" aria-current="page" >المنتجات</a><a href="index.html#categories" >الأقسام</a><a href="products.html?offers=1" data-offers-link>العروض</a><a href="about.html" >من نحن</a><a href="contact.html" >تواصل معنا</a></nav>
+    <div class="site-header__tools">
+      <button class="icon-btn" type="button" data-open="search-panel" aria-label="بحث"><i class="bi bi-search" aria-hidden="true"></i></button>
+      <a class="icon-btn cart-btn-wide" href="cart.html" data-cart-label aria-label="السلة"><i class="bi bi-bag" aria-hidden="true"></i><span class="d-none d-lg-inline">السلة</span><span class="cart-badge" data-cart-count hidden>0</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="container">
+  <div class="page-head"><nav class="crumbs" aria-label="مسار الصفحة"><a href="index.html">الرئيسية</a><i class="bi bi-chevron-left" aria-hidden="true"></i><span>المنتجات</span></nav>
+    <h1 id="f-title">كل المنتجات</h1><p id="f-count" aria-live="polite"></p></div>
+  <form class="tools" id="f-form" role="search" action="products.html">
+    <div class="tools__search"><i class="bi bi-search" aria-hidden="true"></i><input class="input-search" id="f-q" type="search" placeholder="ابحث باسم المنتج" autocomplete="off" aria-label="ابحث باسم المنتج"><button class="clear" id="f-q-clear" type="button" aria-label="مسح البحث" hidden><i class="bi bi-x-lg" aria-hidden="true"></i></button></div>
+    <div class="tools__row">
+      <select class="select" id="f-sort" aria-label="ترتيب المنتجات"><option value="default">الترتيب: الافتراضي</option><option value="price-asc">السعر: من الأقل للأعلى</option><option value="price-desc">السعر: من الأعلى للأقل</option></select>
+      <label class="switch"><input type="checkbox" id="f-avail"><span class="switch__t" aria-hidden="true"></span><span>المتوفر فقط</span></label>
+      <button class="link-btn" type="button" data-reset hidden><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i><span>مسح الفلاتر</span></button>
+    </div>
+    <div class="chips-bar"><div class="chips" id="f-chips" role="group" aria-label="الأقسام"></div></div>
+  </form>
+  <div class="p-grid" id="products-grid" style="margin-top:14px"></div>
+  <div class="empty" id="f-empty" hidden>
+    <div class="empty__ic"><i class="bi bi-search" aria-hidden="true"></i></div>
+    <h2>مش لقينا منتجات مطابقة لبحثك.</h2><p>جرّب كلمة تانية أو شيل الفلاتر وشوف كل المنتجات.</p>
+    <button class="btn-b btn-b--blue" type="button" data-reset>مسح الفلاتر</button>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/logo/logo-white.svg" alt="Healthy" width="136" height="34" loading="lazy">
+        <p>منتجات ألبان طبيعية من فرعنا في العريش. اطلب بسهولة عبر واتساب والدفع نقدًا عند الاستلام.</p>
+        <div class="social" aria-label="حسابات التواصل الاجتماعي">
+          <span class="soc" data-social="facebook" aria-label="فيسبوك" title="قريبًا"><i class="bi bi-facebook" aria-hidden="true"></i></span>
+          <span class="soc" data-social="instagram" aria-label="إنستجرام" title="قريبًا"><i class="bi bi-instagram" aria-hidden="true"></i></span>
+          <span class="soc" data-social="tiktok" aria-label="تيك توك" title="قريبًا"><i class="bi bi-tiktok" aria-hidden="true"></i></span>
+        </div>
+      </div>
+      <div><h3>روابط سريعة</h3><ul>
+        <li><a href="index.html">الرئيسية</a></li><li><a href="products.html">المنتجات</a></li>
+        <li><a href="products.html?offers=1" data-offers-link>العروض</a></li><li><a href="about.html">من نحن</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+      <div><h3>الأقسام</h3><ul><li><a href="products.html?cat=milk">الألبان</a></li><li><a href="products.html?cat=cheese">الجبن</a></li><li><a href="products.html?cat=yogurt">الزبادي</a></li><li><a href="products.html?cat=juice">العصائر والمشروبات</a></li></ul></div>
+      <div class="footer-contact"><h3>تواصل معنا</h3><ul>
+        <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span><span data-bind="address">العريش، شمال سيناء، مصر</span></span></li>
+        <li><i class="bi bi-clock" aria-hidden="true"></i><span data-bind="hours">مواعيد العمل سيتم إضافتها قريبًا</span></li>
+        <li><i class="bi bi-whatsapp" aria-hidden="true"></i><a href="#" data-wa-link style="min-height:0;display:inline">واتساب</a></li></ul></div>
+    </div>
+    <p class="footer-bottom">© <span data-year>2026</span> Healthy. جميع الحقوق محفوظة.</p>
+  </div>
+</footer>
+<div class="ov ov--sheet" id="categories-sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-label="الأقسام">
+  <button class="ov__scrim" type="button" data-close aria-label="إغلاق" tabindex="-1"></button>
+  <div class="ov__panel"><div class="sheet-grab"></div><h2 class="sheet-title">تسوق حسب القسم</h2>
+    <div class="cat-tiles"><a class="cat-tile" data-tint="milk" href="products.html?cat=milk"><img src="assets/images/categories/milk.svg" alt="" width="46" height="46"><span>الألبان</span></a><a class="cat-tile" data-tint="cheese" href="products.html?cat=cheese"><img src="assets/images/categories/cheese.svg" alt="" width="46" height="46"><span>الجبن</span></a><a class="cat-tile" data-tint="yogurt" href="products.html?cat=yogurt"><img src="assets/images/categories/yogurt.svg" alt="" width="46" height="46"><span>الزبادي</span></a><a class="cat-tile" data-tint="juice" href="products.html?cat=juice"><img src="assets/images/categories/juice.svg" alt="" width="46" height="46"><span>العصائر والمشروبات</span></a><a class="cat-tile cat-tile--all" href="products.html"><span>كل المنتجات</span><i class="bi bi-arrow-left" aria-hidden="true"></i></a></div></div>
+</div>
+<div class="ov ov--sheet" id="more-sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-label="المزيد">
+  <button class="ov__scrim" type="button" data-close aria-label="إغلاق" tabindex="-1"></button>
+  <div class="ov__panel"><div class="sheet-grab"></div><h2 class="sheet-title">المزيد</h2>
+    <div class="sheet-links">
+      <a class="sheet-link" href="products.html?offers=1" data-offers-link><i class="bi bi-tag" aria-hidden="true"></i><span>العروض</span><i class="bi bi-chevron-left" aria-hidden="true"></i></a>
+      <a class="sheet-link" href="about.html"><i class="bi bi-info-circle" aria-hidden="true"></i><span>من نحن</span><i class="bi bi-chevron-left" aria-hidden="true"></i></a>
+      <a class="sheet-link" href="contact.html"><i class="bi bi-geo-alt" aria-hidden="true"></i><span>الموقع والتواصل</span><i class="bi bi-chevron-left" aria-hidden="true"></i></a>
+      <a class="sheet-link sheet-link--wa" href="#" data-wa-link><i class="bi bi-whatsapp" aria-hidden="true"></i><span>راسلنا على واتساب</span><i class="bi bi-chevron-left" aria-hidden="true"></i></a>
+    </div></div>
+</div>
+<div class="ov ov--search" id="search-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-label="بحث عن منتج">
+  <button class="ov__scrim" type="button" data-close aria-label="إغلاق" tabindex="-1"></button>
+  <div class="ov__panel">
+    <form class="search-form" action="products.html" method="get" role="search">
+      <div class="search-field"><i class="bi bi-search" aria-hidden="true"></i><input id="search-input" data-autofocus type="search" name="q" placeholder="ابحث عن منتج، مثل: حليب أو جبنة" autocomplete="off" enterkeyhint="search" aria-label="ابحث عن منتج"></div>
+      <button class="icon-btn" type="button" data-close aria-label="إغلاق البحث"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+    </form>
+    <div id="search-results" aria-live="polite"></div>
+  </div>
+</div>
+<a class="cart-pill" id="cart-pill" href="cart.html" aria-hidden="true" tabindex="-1">
+  <span class="cart-pill__ic"><i class="bi bi-bag-check" aria-hidden="true"></i></span>
+  <span class="cart-pill__txt"><b>عرض السلة</b><small data-pill-items>0 منتج</small></span>
+  <span class="cart-pill__tot" data-pill-total>0</span>
+</a>
+<nav class="bottom-nav" aria-label="التنقل السريع">
+  <a class="bn-item" href="index.html"><i class="bi bi-house" aria-hidden="true"></i><span>الرئيسية</span></a>
+  <button class="bn-item" type="button" data-open="categories-sheet"><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>الأقسام</span></button>
+  <a class="bn-item" href="cart.html" data-cart-label><i class="bi bi-bag" aria-hidden="true"></i><span>السلة</span><span class="cart-badge" data-cart-count hidden>0</span></a>
+  <button class="bn-item" type="button" data-open="more-sheet"><i class="bi bi-three-dots" aria-hidden="true"></i><span>المزيد</span></button>
+</nav>
+<div id="sr-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+<script src="js/config.js" defer></script>
+<script src="js/products.js" defer></script>
+<script src="js/cart.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/filters.js" defer></script>
+</body>
+</html>

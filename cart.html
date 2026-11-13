@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>السلة وإتمام الطلب | Healthy</title>
+<meta name="description" content="راجع سلتك وأكمل طلبك من Healthy بسهولة عبر واتساب. توصيل داخل العريش والدفع نقدًا عند الاستلام.">
+<meta name="theme-color" content="#2926B8">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:site_name" content="Healthy">
+<meta property="og:title" content="السلة وإتمام الطلب | Healthy">
+<meta property="og:description" content="راجع سلتك وأكمل طلبك من Healthy بسهولة عبر واتساب. توصيل داخل العريش والدفع نقدًا عند الاستلام.">
+<!-- After deploying, change this to the full URL, e.g. https://your-domain.com/assets/images/banners/og-image.png -->
+<meta property="og:image" content="assets/images/banners/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+<link rel="preload" href="assets/vendor/fonts/tajawal-arabic-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/vendor/fonts/tajawal-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.rtl.min.css">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="cart" class="page-cart">
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+<!-- <div class="demo-strip" data-demo hidden>نسخة تجريبية: المنتجات والأسعار للعرض فقط</div> -->
+<div class="announce" role="note"><p data-announce-text>منتجات Healthy الطبيعية.. دلوقتي تقدر تطلبها لحد باب بيتك في العريش</p></div>
+<header class="site-header">
+  <div class="container site-header__in">
+    <a class="brand" href="index.html" aria-label="Healthy، الصفحة الرئيسية"><img src="assets/images/logo/logo.svg" alt="Healthy" width="120" height="30"></a>
+    <nav class="nav-main" aria-label="القائمة الرئيسية"><a href="index.html" >الرئيسية</a><a href="products.html" >المنتجات</a><a href="index.html#categories" >الأقسام</a><a href="products.html?offers=1" data-offers-link>العروض</a><a href="about.html" >من نحن</a><a href="contact.html" >تواصل معنا</a></nav>
+    <div class="site-header__tools">
+      <button class="icon-btn" type="button" data-open="search-panel" aria-label="بحث"><i class="bi bi-search" aria-hidden="true"></i></button>
+      <a class="icon-btn cart-btn-wide" href="cart.html" data-cart-label aria-label="السلة"><i class="bi bi-bag" aria-hidden="true"></i><span class="d-none d-lg-inline">السلة</span><span class="cart-badge" data-cart-count hidden>0</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="container">
+  <div class="page-head"><nav class="crumbs" aria-label="مسار الصفحة"><a href="index.html">الرئيسية</a><i class="bi bi-chevron-left" aria-hidden="true"></i><span>السلة</span></nav>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><div><h1 id="cart-heading" tabindex="-1">سلة التسوق</h1><p id="cart-sub" aria-live="polite"></p></div>
+    <button class="link-btn" type="button" id="clear-cart" hidden><i class="bi bi-trash3" aria-hidden="true"></i><span style="display:inline">تفريغ السلة</span></button></div></div>
+
+  <div class="empty" id="cart-empty" hidden>
+    <div class="empty__ic"><i class="bi bi-bag" aria-hidden="true"></i></div>
+    <h2>سلتك فاضية</h2><p>ابدأ بإضافة منتجات الألبان اللي بتحبها وهتظهر هنا.</p>
+    <a class="btn-b btn-b--green btn-b--lg" href="products.html">تصفح المنتجات</a>
+  </div>
+
+  <div class="cart-layout" id="cart-filled" hidden>
+    <div class="cart-main">
+      <section class="panel" aria-labelledby="s1"><h2 id="s1"><span class="panel__n">1</span> مراجعة الطلب</h2>
+        <div class="warn-box" id="unavailable-warning" role="alert" hidden><i class="bi bi-exclamation-triangle" aria-hidden="true"></i><span>في السلة منتج غير متوفر حاليًا. احذفه علشان تقدر تكمل الطلب.</span></div>
+        <ul id="cart-lines"></ul></section>
+
+      <form class="panel" id="checkout-form" novalidate aria-labelledby="s2">
+        <h2 id="s2"><span class="panel__n">2</span> بيانات الاستلام</h2>
+        <div class="form-errors" id="form-errors" role="alert" hidden></div>
+        <div class="methods" role="radiogroup" aria-label="طريقة الاستلام">
+          <label class="method"><input type="radio" name="method" value="delivery" checked><span class="method__card"><i class="bi bi-truck" aria-hidden="true"></i><b>توصيل للمنزل</b><small>داخل العريش · رسوم <span data-fee-label></span></small></span></label>
+          <label class="method"><input type="radio" name="method" value="pickup"><span class="method__card"><i class="bi bi-shop" aria-hidden="true"></i><b>استلام من الفرع</b><small>بدون رسوم توصيل</small></span></label>
+        </div>
+        <div class="field"><label for="c-name">الاسم</label><input class="input" id="c-name" name="name" type="text" autocomplete="name" placeholder="مثال: محمد أحمد" required aria-describedby="err-name"><p class="field__err" id="err-name" data-err="name" hidden></p></div>
+        <div class="field"><label for="c-phone">رقم الموبايل</label><input class="input" id="c-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="01012345678" required aria-describedby="err-phone"><p class="field__err" id="err-phone" data-err="phone" hidden></p></div>
+        <div class="field" data-home-only><label for="c-area">منطقة التوصيل</label><select id="c-area" name="area" required aria-describedby="err-area hint-area"></select><p class="field__hint" id="hint-area">التوصيل متاح داخل مدينة العريش فقط.</p><p class="field__err" id="err-area" data-err="area" hidden></p></div>
+        <div class="field" data-home-only><label for="c-address">العنوان بالتفصيل</label><textarea class="textarea" id="c-address" name="address" autocomplete="street-address" placeholder="الشارع، رقم المبنى، الدور، علامة مميزة" required aria-describedby="err-address"></textarea><p class="field__err" id="err-address" data-err="address" hidden></p></div>
+        <div class="field"><label for="c-notes">ملاحظات الطلب <span class="opt">(اختياري)</span></label><textarea class="textarea" id="c-notes" name="notes" style="min-height:76px" placeholder="أي تفاصيل تحب نعرفها"></textarea></div>
+        <div class="field" style="margin-bottom:0"><span class="lbl">طريقة الدفع</span><div class="pay-note"><i class="bi bi-cash-coin" aria-hidden="true"></i><div>نقدًا عند الاستلام<small>لا يوجد دفع إلكتروني حاليًا.</small></div></div></div>
+      </form>
+    </div>
+
+    <aside class="cart-aside" aria-labelledby="s3"><div class="panel summary">
+      <h2 id="s3" style="margin-bottom:4px"><span class="panel__n">3</span> ملخص الطلب</h2>
+      <div class="sum-row"><span>المنتجات</span><b data-sum="subtotal"></b></div>
+      <div class="sum-row"><span>التوصيل<span class="demo-tag" data-demo hidden>رسوم تجريبية</span></span><b data-sum="delivery"></b></div>
+      <p class="free-hint" data-free-hint hidden></p>
+      <div class="sum-row sum-row--total"><span>الإجمالي</span><b data-sum="total"></b></div>
+      <button class="btn-b btn-b--green btn-b--lg btn-b--block" type="submit" form="checkout-form" data-submit><i class="bi bi-whatsapp" aria-hidden="true"></i> إرسال الطلب عبر واتساب</button>
+      <p class="safe-note"><i class="bi bi-info-circle" aria-hidden="true"></i><span>سيفتح واتساب برسالة جاهزة بطلبك. الطلب لا يُعتبر مؤكدًا إلا بعد أن يرد المتجر ويؤكده معك.</span></p>
+    </div></aside>
+  </div>
+
+  <section class="panel done" id="order-done" hidden aria-labelledby="done-title">
+    <div class="done__ic"><i class="bi bi-whatsapp" aria-hidden="true"></i></div>
+    <h2 id="done-title" tabindex="-1">طلبك جاهز للإرسال</h2>
+    <div id="done-ready"><p>فتحنا واتساب برسالة فيها تفاصيل طلبك. <b>لازم تضغط «إرسال» هناك</b> علشان الطلب يوصل للمتجر.</p></div>
+    <div id="done-nonumber" hidden><p>رقم واتساب المتجر لم يُضبط بعد في <code>js/config.js</code> (نسخة تجريبية)، فلم يتم فتح واتساب. هذه هي الرسالة التي كانت ستُرسل:</p></div>
+    <ol class="done__steps"><li><b>1</b><span>أرسل الرسالة من واتساب.</span></li><li><b>2</b><span>انتظر رد المتجر لتأكيد الطلب وموعد التوصيل.</span></li><li><b>3</b><span>ادفع نقدًا عند الاستلام.</span></li></ol>
+    <textarea id="done-msg" readonly aria-label="نص رسالة الطلب"></textarea>
+    <div class="done__acts">
+      <a class="btn-b btn-b--green btn-b--lg" id="done-open" href="#" target="_blank" rel="noopener"><i class="bi bi-whatsapp" aria-hidden="true"></i> فتح واتساب مرة أخرى</a>
+      <button class="btn-b btn-b--outline" type="button" id="done-copy"><i class="bi bi-clipboard" aria-hidden="true"></i> نسخ الرسالة</button>
+      <button class="btn-b btn-b--outline" type="button" id="done-edit"><i class="bi bi-pencil" aria-hidden="true"></i> تعديل الطلب</button>
+      <button class="btn-b btn-b--blue" type="button" id="done-new"><i class="bi bi-check2-circle" aria-hidden="true"></i> أرسلت الطلب، ابدأ طلبًا جديدًا</button>
+    </div>
+  </section>
+</div>
+<div class="checkout-bar" id="checkout-bar"><div class="checkout-bar__tot"><small>الإجمالي</small><b data-sum="total"></b></div>
+  <button class="btn-b btn-b--green" type="submit" form="checkout-form" data-submit><i class="bi bi-whatsapp" aria-hidden="true"></i> إرسال الطلب</button></div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/logo/logo-white.svg" alt="Healthy" width="136" height="34" loading="lazy">
+        <p>منتجات ألبان طبيعية من فرعنا في العريش. اطلب بسهولة عبر واتساب والدفع نقدًا عند الاستلام.</p>
+        <div class="social" aria-label="حسابات التواصل الاجتماعي">
+          <span class="soc" data-social="facebook" aria-label="فيسبوك" title="قريبًا"><i class="bi bi-facebook" aria-hidden="true"></i></span>
+          <span class="soc" data-social="instagram" aria-label="إنستجرام" title="قريبًا"><i class="bi bi-instagram" aria-hidden="true"></i></span>
+          <span class="soc" data-social="tiktok" aria-label="تيك توك" title="قريبًا"><i class="bi bi-tiktok" aria-hidden="true"></i></span>
+        </div>
+      </div>
+      <div><h3>روابط سريعة</h3><ul>
+        <li><a href="index.html">الرئيسية</a></li><li><a href="products.html">المنتجات</a></li>
+        <li><a href="products.html?offers=1" data-offers-link>العروض</a></li><li><a href="about.html">من نحن</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+      <div><h3>الأقسام</h3><ul><li><a href="products.html?cat=milk">الألبان</a></li><li><a href="products.html?cat=cheese">الجبن</a></li><li><a href="products.html?cat=yogurt">الزبادي</a></li><li><a href="products.html?cat=juice">العصائر والمشروبات</a></li></ul></div>
+      <div class="footer-contact"><h3>تواصل معنا</h3><ul>
+        <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span><span data-bind="address">العريش، شمال سيناء، مصر</span></span></li>
+        <li><i class="bi bi-clock" aria-hidden="true"></i><span data-bind="hours">مواعيد العمل سيتم إضافتها قريبًا</span></li>
+        <li><i class="bi bi-whatsapp" aria-hidden="true"></i><a href="#" data-wa-link style="min-height:0;display:inline">واتساب</a></li></ul></div>
+    </div>
+    <p class="footer-bottom">© <span data-year>2026</span> Healthy. جميع الحقوق محفوظة.</p>
+  </div>
+</footer>
+<div class="ov ov--sheet" id="categories-sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-label="الأقسام">
+  <button class="ov__scrim" type="button" data-close aria-label="إغلاق" tabindex="-1"></button>
+  <div class="ov__panel"><div class="sheet-grab"></div><h2 class="sheet-title">تسوق حسب القسم</h2>
+    <div class="cat-tiles"><a class="cat-tile" data-tint="milk" href="products.html?cat=milk"><img src="assets/images/categories/milk.svg" alt="" width="46" height="46"><span>الألبان</span></a><a class="cat-tile" data-tint="cheese" href="products.html?cat=cheese"><img src="assets/images/categories/cheese.svg" alt="" width="46" height="46"><span>الجبن</span></a><a class="cat-tile" data-tint="yogurt" href="products.html?cat=yogurt"><img src="assets/images/categories/yogurt.svg" alt="" width="46" height="46"><span>الزبادي</span></a><a class="cat-tile" data-tint="juice" href="products.html?cat=juice"><img src="assets/images/categories/juice.svg" alt="" width="46" height="46"><span>العصائر والمشروبات</span></a><a class="cat-tile cat-tile--all" href="products.html"><span>كل المنتجات</span><i class="bi bi-arrow-left" aria-hidden="true"></i></a></div></div>
+</div>
+<div class="ov ov--sheet" id="more-sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-label="المزيد">
+  <button class="ov__scrim" type="button" data-close aria-label="إغلاق" tabindex="-1"></button>
+  <div class="ov__panel"><div class="sheet-grab"></div><h2 class="sheet-title">المزيد</h2>
+    <div class="sheet-links">
+      <a class="sheet-link" href="products.html?offers=1" data-offers-link><i class="bi bi-tag" aria-hidden="true"></i><span>العروض</span><i class="bi bi-chevron-left" aria-hidden="true"></i></a>
+      <a class="sheet-link" href="about.html"><i class="bi bi-info-circle" aria-hidden="true"></i><span>من نحن</span><i class="bi bi-chevron-left" aria-hidden="true"></i></a>
+      <a class="sheet-link" href="contact.html"><i class="bi bi-geo-alt" aria-hidden="true"></i><span>الموقع والتواصل</span><i class="bi bi-chevron-left" aria-hidden="true"></i></a>
+      <a class="sheet-link sheet-link--wa" href="#" data-wa-link><i class="bi bi-whatsapp" aria-hidden="true"></i><span>راسلنا على واتساب</span><i class="bi bi-chevron-left" aria-hidden="true"></i></a>
+    </div></div>
+</div>
+<div class="ov ov--search" id="search-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-label="بحث عن منتج">
+  <button class="ov__scrim" type="button" data-close aria-label="إغلاق" tabindex="-1"></button>
+  <div class="ov__panel">
+    <form class="search-form" action="products.html" method="get" role="search">
+      <div class="search-field"><i class="bi bi-search" aria-hidden="true"></i><input id="search-input" data-autofocus type="search" name="q" placeholder="ابحث عن منتج، مثل: حليب أو جبنة" autocomplete="off" enterkeyhint="search" aria-label="ابحث عن منتج"></div>
+      <button class="icon-btn" type="button" data-close aria-label="إغلاق البحث"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+    </form>
+    <div id="search-results" aria-live="polite"></div>
+  </div>
+</div>
+<a class="cart-pill" id="cart-pill" href="cart.html" aria-hidden="true" tabindex="-1">
+  <span class="cart-pill__ic"><i class="bi bi-bag-check" aria-hidden="true"></i></span>
+  <span class="cart-pill__txt"><b>عرض السلة</b><small data-pill-items>0 منتج</small></span>
+  <span class="cart-pill__tot" data-pill-total>0</span>
+</a>
+<nav class="bottom-nav" aria-label="التنقل السريع">
+  <a class="bn-item" href="index.html"><i class="bi bi-house" aria-hidden="true"></i><span>الرئيسية</span></a>
+  <button class="bn-item" type="button" data-open="categories-sheet"><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>الأقسام</span></button>
+  <a class="bn-item" href="cart.html" data-cart-label aria-current="page"><i class="bi bi-bag" aria-hidden="true"></i><span>السلة</span><span class="cart-badge" data-cart-count hidden>0</span></a>
+  <button class="bn-item" type="button" data-open="more-sheet"><i class="bi bi-three-dots" aria-hidden="true"></i><span>المزيد</span></button>
+</nav>
+<div id="sr-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+<script src="js/config.js" defer></script>
+<script src="js/products.js" defer></script>
+<script src="js/cart.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/checkout.js" defer></script>
+</body>
+</html>
